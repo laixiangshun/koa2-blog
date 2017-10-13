@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>koa2-blog</title>
+</head>
+<body>
+    <canvas id="cas"></canvas>
+    <link href="/index.css" rel="stylesheet">
+    <script type="text/javascript" src="http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/canvas.js"></script>
+    <div class="main_content">
+    <header>
+        <div class="user_name">
+            <% if(session.user){%>
+                <span>欢迎你:<%= session.user %></span>
+            <% } %>
+            <% if(!session.user){ %>
+                <span>未登录,<a href="/signin">点击登录</a></span>
+            <% } %>
+        </div>
+        <div class="message">
+            <div class="error"></div>
+            <div class="success"></div>
+        </div>
+        <div class="user_right">
+            <% if(session.user){ %>
+                <div class="has_user">
+                    <a href="/posts">全部文章</a>
+                    <a href="/create">发表文章</a>
+                    <span class="signout">登出</span>
+                </div>
+            <% } %>
+            <% if(!session.user){ %>
+                <div class="none_user">
+                    <a href="/posts">全部文章</a>
+                    <a href="/signup">注册</a>
+                    <a href="/signin">登录</a>
+                </div>
+            <% } %>
+        </div>
+    </header>
+    <script type="text/javascript">
+        function fade(data){
+            if($(data).css('display')!=='none'){
+                $(data).fadeOut(1500);
+            }else{
+                $(data).show();
+                $(data).fadeOut(1500);
+            }
+        }
+        $('.signout').click(()=>{
+            $.ajax({
+                url: '/signout',
+                type: 'get',
+                cache: false,
+                dataType: 'json',
+                success: function(msg){
+                    if(msg){
+                        $('.success').text('登出成功');
+                        fade('.success');
+                        setTimeout(()=>{
+                            window.location.href='/posts';
+                        },1000);
+                    }
+                },error: function(){
+                    alert('登出操作异常');
+                }
+            });
+        });
+    </script>

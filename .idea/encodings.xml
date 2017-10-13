@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/index.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lib/mysql.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/public/index.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/public/js/canvas.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/routes/posts.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/routes/signin.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/routes/signup.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/views/create.ejs" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/views/edit.ejs" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/views/posts.ejs" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/views/sPost.ejs" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/views/signin.ejs" charset="UTF-8" />
+  </component>
+</project>
