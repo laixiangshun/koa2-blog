@@ -5,8 +5,11 @@ var router=require('koa-router')();
 var userModel=require('../lib/mysql.js');
 //加密
 var md5=require('md5');
+var checkNotLogin=require('../middlewares/check.js').checkNotLogin;
+var checkLogin=require('../middlewares/check.js').checkLogin;
 //注册页
 router.get('/signup',async(ctx,next)=>{
+    await checkNotLogin(ctx);
     await ctx.render('signup',{
         session: ctx.session
     })

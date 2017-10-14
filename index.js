@@ -12,7 +12,8 @@ var router=require('koa-router');
 var views=require('koa-views');
 var koaStatic=require('koa-static');
 var app=new koa();
-
+var server=require('http').Server(app.callback());
+var io=require('socket.io').listen(server);
 //session存储配置
 const sessionMysqlConfig={
     user: config.database.USERNAME,
@@ -38,5 +39,37 @@ app.use(require('./routes/signup.js').routes());
 app.use(require('./routes/signin.js').routes());
 app.use(require('./routes/posts.js').routes());
 app.use(require('./routes/signout.js').routes());
-app.listen(3000);//监听端口
+app.use(require('./routes/chat.js').routes());
+server.listen(config.port);//监听端口
 console.log('listening on port '+config.port);
+var users=[];
+//socket部分
+io.on('connection',function(socket){
+    //接收并处理客服端发送的login事件
+    socket.on('login',function(nickname){
+        if(users.indexOf(nickname)>-1){
+            socket.emit('nickExisted');
+        }else{
+            socket.userIndex=users.length;
+            socket.nickname=nickname;
+            users.push(nickname);
+            socket.emit('loginSuccess');
+            console.log(users.length);
+            console.log(users);
+            io.sockets.emit('system',nickname,users.length,'login');//向所有连接到服务器的客服端发送当前登录用户的昵称
+        }
+    });
+    //断开连接的事件
+    socket.on('disconnect',function(){
+        users.splice(socket.userIndex,1);
+        //通知除自己外的所有人
+        socket.broadcast.emit('system',socket.nickname,users.length,'logout');
+    });
+    socket.on('postMsg',function(msg,color){
+        socket.broadcast.emit('newMsg',socket.nickname,msg,color);
+    });
+    //接收用户发来的图片
+    socket.on('img',function(imgData){
+        socket.broadcast.emit('newImg',socket.nickname,imgData);
+    });
+});

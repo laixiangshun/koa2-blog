@@ -123,7 +123,7 @@
         </div>
         <% if(session.user){ %>
             <form class="form" method="post" action="/<%=posts[0]['id'] %>">
-                <textarea name="content" id="content"></textarea>
+                <textarea class="textarea" name="content" id="content"></textarea>
                 <div class="submit">发表评论</div>
             </form>
         <% }else{ %>
