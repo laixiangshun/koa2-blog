@@ -20,6 +20,7 @@ HiChat.prototype={
             document.getElementById('info').textContent='get yourself a nickname:';
             document.getElementById('nickWrapper').style.display='block';
             document.getElementById('nicknameInput').focus();
+            $('.chat').css('display','none');
         });
         document.getElementById('loginBtn').addEventListener('click',function(){
             var nickname=document.getElementById('nicknameInput').value;

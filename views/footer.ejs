@@ -1,6 +1,13 @@
         </div>
         <div class="chat">
-            <a href="/chat">看文章累了,来跟大家聊聊天吧</a>
+            <a href="/chat" title="看文章累了,来跟大家聊聊天吧">
+                <img src="/img/atm.png" width="60px" height="60px">
+            </a>
+        </div>
+        <div class="back">
+            <a title="回到顶部">
+                <img src="/img/less.png" width="70px" height="70px">
+            </a>
         </div>
         <footer>
             <span>@copyRight-rainbow</span>
@@ -16,6 +23,24 @@
                 var position=document.body.scrollHeight > ct() ? '' : 'absolute';
                 $('footer').css('position',position);
             })();
+            $(document).ready(function(){
+                if($('.chat').css('display')=='none'){
+                    $('.chat').css('display','block');
+                }
+            });
+            $(window).scroll(function(){
+                var scHeight=$(window).scrollTop();
+                var width=$(window).height();
+                if(scHeight>10){
+                    $('.back').css('display','block');
+                }else{
+                    $('.back').css('display','none');
+                }
+            })
+            $('.back').click(function(){
+                var scHeight=$(window).scrollTop();
+                $('body,html').animate({scrollTop:0},300);
+            })
         </script>
     </body>
 </html>

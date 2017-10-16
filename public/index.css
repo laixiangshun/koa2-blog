@@ -214,14 +214,51 @@ a:hover{
 .chat{
     display: block;
     position: fixed;
-    text-align: right;
+    text-align: center;
     font-size: 20px;
-    right: 50px;
-    width: 100px;
-    height: 100px;
-    bottom: 130px;
-    background-color: #1E9FFF;
+    right: 150px;
+    width: 80px;
+    height: 80px;
+    bottom: 310px;
+    background-color: #cccccc;
     cursor: pointer;
+    line-height: 80px;
+    vertical-align: middle;
+    padding: 2px;
+    border-radius: 150px;
+    opacity: 0.7;
+}
+.chat img{
+    vertical-align: middle;
+}
+.chat:hover{
+    background-color: #FFFE11;
+    opacity: 0.9;
+}
+.back{
+    display: none;
+    position: fixed;
+    text-align: center;
+    font-size: 20px;
+    right: 150px;
+    width: 80px;
+    height: 80px;
+    bottom: 200px;
+    background-color: #cccccc;
+    cursor: pointer;
+    line-height: 80px;
+    vertical-align: middle;
+    padding: 2px;
+    border-radius: 150px;
+    margin-top: 30px;
+    opacity: 0.7;
+}
+.back img{
+    vertical-align: middle;
+}
+.back:hover{
+    background-color: #FFFE11;
+    opacity: 0.9;
 }
 footer{
     display: block;
