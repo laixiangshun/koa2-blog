@@ -31,15 +31,19 @@
             $(window).scroll(function(){
                 var scHeight=$(window).scrollTop();
                 var width=$(window).height();
-                if(scHeight>10){
-                    $('.back').css('display','block');
+                if(scHeight>100){
+//                    $('.back').css('display','block');
+                    //增加渐隐渐现的效果
+                    $('.back').fadeIn(1500);
                 }else{
-                    $('.back').css('display','none');
+//                    $('.back').css('display','none');
+                     $('.back').fadeOut(1500);
                 }
             })
             $('.back').click(function(){
-                var scHeight=$(window).scrollTop();
+//                var scHeight=$(window).scrollTop();
                 $('body,html').animate({scrollTop:0},300);
+                return false;
             })
         </script>
     </body>
