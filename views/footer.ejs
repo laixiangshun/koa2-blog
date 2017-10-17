@@ -9,11 +9,14 @@
                 <img src="/img/less.png" width="70px" height="70px">
             </a>
         </div>
+        <% include weather %>
         <footer>
             <span>@copyRight-rainbow</span>
             <strong>地址:</strong><span>高新区孵化园XXXX</span>
             <strong>邮箱:</strong><span>739156890@qq.com</span>
         </footer>
+        <script type="text/javascript" src="/js/canvas.js"></script>
+        <script type="text/javascript" src="/js/weather.js"></script>
         <script type="text/javascript">
             <!-- footer自适应文档高度-->
             function ct() {
@@ -27,6 +30,7 @@
                 if($('.chat').css('display')=='none'){
                     $('.chat').css('display','block');
                 }
+                $(window).on('scroll');
             });
             $(window).scroll(function(){
                 var scHeight=$(window).scrollTop();
@@ -44,6 +48,26 @@
 //                var scHeight=$(window).scrollTop();
                 $('body,html').animate({scrollTop:0},300);
                 return false;
+            });
+            //根据鼠标进入和离开显示天气信息
+            $('.show_weather').mouseover(function(e){
+                var timer1=setTimeout(()=>{
+                    $('.weather-box').fadeIn(1000);
+                    $('.show_weather').animate({'left':'-50px'},500);
+                },500);
+
+//                var left= e.clientX+10;
+//                var top=$(window).height()- e.clientY;
+//                $('.weather-box').css({'left':left,'top': top});
+            });
+            $('.weather-box').mouseleave(function () {
+                var timer2=setTimeout(()=>{
+                    $('.weather-box').fadeOut(1000);
+                    $('.show_weather').animate({'left':'10px'},500);
+                },500);
+//                $('.weather-box').fadeOut(1000);
+//                $('.show_weather').fadeIn(1000);
+//                $('.show_weather').animate({'left':'10px'},500);
             })
         </script>
     </body>

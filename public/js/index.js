@@ -21,6 +21,7 @@ HiChat.prototype={
             document.getElementById('nickWrapper').style.display='block';
             document.getElementById('nicknameInput').focus();
             $('.chat').css('display','none');
+            $(window).off('scroll');
         });
         document.getElementById('loginBtn').addEventListener('click',function(){
             var nickname=document.getElementById('nicknameInput').value;

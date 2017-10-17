@@ -1,0 +1,118 @@
+.weather-box{
+    box-sizing: content-box;
+    width: 550px;
+    height: 400px;
+    background: #fff url("./img/weatherModuleBg.jpg") no-repeat center;
+    background-size: cover;
+    border: 1px solid #dddddd;
+    position: absolute;
+    left: 10px;
+    bottom: 100px;
+    z-index: 10000;
+    border-radius: 5px;
+    position: fixed;
+    display: none;
+}
+.today{
+    line-height: 20px;
+    position: relative;
+}
+.choosecity{
+    position: absolute;
+    top: 0;
+    right: 80px;
+}
+.thiscity{
+    width: 5em;
+    background-color: transparent;
+    outline: none;
+    border: 1px solid #888;
+}
+.update{
+    display: inline-block;
+    float: right;
+    /*outline: 1px solid #888;*/
+    padding: 1px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #1E9FFF;
+    margin-right: 5px;
+    border-radius: 10px ;
+    width: 50px;
+    text-align: center;
+    line-height: 20px;
+}
+.update:hover{
+    background-color: #eeeeee;
+}
+.todayinfo{
+    float: left;
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 250px;
+    height: 150px;
+    text-align: center;
+    background-color: rgba(255,255,255,0.5);
+    box-shadow: 1px 1px 1px #888;
+}
+.todayinfo h2,.todayinfo p{
+    margin-top: 8px;
+}
+.todayotherinfo{
+    float: right;
+    margin: 10px 10px 0 0;
+    width: 220px;
+    height: 150px;
+    padding: 2px 10px;
+    background-color: rgba(255,255,255,0.5);
+    overflow: hidden;
+    box-shadow: 1px 1px 1px #888;
+}
+.todayotherinfo h4{
+    margin: 8px 0 4px;
+}
+.todayotherinfo p{
+    margin-top: 4px;
+    text-align: left;
+    font-size: 12px;
+}
+.future{
+    float: left;
+    margin-top: 30px;
+    margin-left: 10px;
+    height: 120px;
+    padding: 5px 0;
+    width: 500px;
+    background-color: rgba(255,255,255,0.5);
+    box-shadow: 1px 1px 1px #888;
+}
+.future ul li{
+    float: left;
+    width: 124px;
+    border-right: 1px solid #eee;
+    list-style: none;
+    height: 120px;
+    text-align: center;
+    /*box-shadow: 1px 1px 1px #888;*/
+}
+.future-item2{
+    border: none !important;
+}
+.future li p{
+    font-size: 14px;
+    margin-top: 5px;
+}
+.future li h2{
+    margin: 5px 0;
+}
+h4{
+    margin: 10px 0;
+    padding: 0;
+}
+.temprange{
+    /*display: inline-block;*/
+    padding: 5px 5px;
+    background: #1E9FFF;
+    color: #fff;
+    border-radius: 10px;
+}
