@@ -32,17 +32,14 @@
                 var position=document.body.scrollHeight > ct() ? '' : 'absolute';
                 $('footer').css('position',position);
             })();
+            var timer;
             $(document).ready(function(){
                 if($('.chat').css('display')=='none'){
                     $('.chat').css('display','block');
                 }
                 $(window).on('scroll');
-                setInterval(animate,1000);
-//                animate();
+                timer=setInterval(animate,1000);
             });
-//            window.onload=function(){
-//                setInterval(animate,1000);
-//            }
             //方块移动动画实现
             var left= 0,y= 0,flag=false;
             function animate(){
@@ -59,6 +56,7 @@
                     y=0;
                     flag=false;
                     $('.meeting').css({'left': left+'px','top': y+'px'});
+//                    raf(animate);
                     return false;
                 }
                 if(y<(window.innerHeight-$('.meeting').height())/2 && flag==false){
@@ -70,10 +68,22 @@
                 $('.meeting').css({'left': left+'px','top': y+'px'});
 //                raf(animate);
             }
+            //移动小方块在鼠标进入的时候停止，在鼠标离开的时候继续移动
+            $(function(){
+                $('.meeting').mouseover(function(){
+                    clearInterval(timer);
+                });
+                $('.meeting').mouseout(()=>{
+                    timer=setInterval(animate,1000);
+                });
+            });
+
+            //动画频率
             var raf=window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame ||
                     window.oRequestAnimationFrame || window.msRequestAnimationFrame || function(callback){
                         window.setTimeout(callback,1000/60);
                     };
+            //在页面滚动下滑的时候显示返回顶部按钮
             $(window).scroll(function(){
                 var scHeight=$(window).scrollTop();
                 var width=$(window).height();
