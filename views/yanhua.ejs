@@ -3,22 +3,8 @@
 <head>
     <meta charset="utf-8">
     <title>喜迎十九大</title>
-    <style type="text/css" rel="stylesheet">
-        *{
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-        }
-        .city{
-            width: 100%;
-            position: fixed;
-            bottom: 0;
-            z-index: 100;
-        }
-        .city img{
-            width: 100%;
-        }
-    </style>
+    <link rel="stylesheet" href="/meeting.css">
+
 </head>
 <body onselectstart="return false;">
     <canvas id="cas" style="background-color: rgba(0,5,24,1)">浏览器不支持canvas</canvas>
@@ -31,6 +17,7 @@
         <div class="shape">十九大顺利召开</div>
         <div class="shape">厉害了我的国</div>
     </div>
+    <div id="show_text"></div>
     <audio src="/music/boom.mp3" preload="auto"></audio>
     <audio src="/music/boom.mp3" preload="auto"></audio>
     <audio src="/music/boom.mp3" preload="auto"></audio>
@@ -40,6 +27,8 @@
     <audio src="/music/shotfire.mp3" preload="auto"></audio>
     <audio src="/music/shotfire.mp3" preload="auto"></audio>
     <audio src="/music/shotfire.mp3" preload="auto"></audio>
+
+    <script type="text/javascript" src="/js/meetingContent.js"></script>
     <script type="text/javascript">
         var canvas=document.getElementById('cas');
         var ocas=document.createElement('canvas');
@@ -56,6 +45,35 @@
             lastTime=new Date();
             animate();
         }
+        //增加了对十九大核心报告逐字打印的效果显示
+        var str_index= 0,start= 0,i=1;
+
+        function show_text(){
+            var show_text=document.getElementById('show_text');
+            if(str_index==str.length){
+                clearInterval(timer);
+            }
+//            console.log(str.substring(0,str_index));
+            var char=str.substr(str_index,1);
+            if(char === "|"){
+                var p=document.createElement('p');
+                p.title=i++;
+//                p.innerText=str.substring(str_index,str_index++);
+//                show_text.insertBefore(p,show_text.lastChild);//使用这个的问题是每次新增的元素作为第一个元素
+                show_text.appendChild(p);
+                start=str_index;
+                str_index+=1;
+            }else if(char != ""){
+                var lastChild=show_text.lastChild;
+                str_index+=1;
+                lastChild.innerText=str.substring(start,str_index).replace('|','');
+            }else{
+                str_index++;
+            }
+//            document.getElementById('text').innerText=str.substring(0,str_index++);
+        }
+        var timer=setInterval(show_text,100);
+
         var lastTime;
         //实现动画效果
         var index=0;

@@ -65,7 +65,7 @@
                     y-=100*perent;
                     flag=true;
                 }
-                $('.meeting').css({'left': left+'px','top': y+'px'});
+                $('.meeting').animate({'left': left+'px','top': y+'px'},100);
 //                raf(animate);
             }
             //移动小方块在鼠标进入的时候停止，在鼠标离开的时候继续移动

@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.city{
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    z-index: 100;
+}
+.city img{
+    width: 100%;
+}
+#show_text{
+    position: absolute;
+    left: 20px;
+    top: 30px;
+    width: 450px;
+    color: #1E9FFF;
+    padding: 5px;
+}
+#show_text p{
+    line-height: 30px;
+    font-size: 14px;
+    /*Ê×ÐÐËõ½ø*/
+    text-indent: 2em;
+    font-weight: 300;
+    font-style: normal;
+}
