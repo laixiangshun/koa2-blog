@@ -9,6 +9,12 @@
                 <img src="/img/less.png" width="70px" height="70px">
             </a>
         </div>
+        <div class="meeting">
+            <a title="十九大专题报告" href="/yanhua">
+                <p>热烈祝贺党的十九大顺利召开</p>
+                <img src="/img/19.jpg" alt="喜迎十九大">
+            </a>
+        </div>
         <% include weather %>
         <footer>
             <span>@copyRight-rainbow</span>
@@ -31,7 +37,43 @@
                     $('.chat').css('display','block');
                 }
                 $(window).on('scroll');
+                setInterval(animate,1000);
+//                animate();
             });
+//            window.onload=function(){
+//                setInterval(animate,1000);
+//            }
+            //方块移动动画实现
+            var left= 0,y= 0,flag=false;
+            function animate(){
+//                var left=$('.meeting').css('left');
+//                var top=$('.meeting').css('top');
+
+                console.log('left:'+left+' top:'+y);
+                console.log(window.innerWidth+";"+window.innerHeight);
+                var perent=window.innerHeight/window.innerWidth;
+                if(left<(window.innerWidth-$('.meeting').width())-10){
+                    left+=100;
+                }else{
+                    left=0;
+                    y=0;
+                    flag=false;
+                    $('.meeting').css({'left': left+'px','top': y+'px'});
+                    return false;
+                }
+                if(y<(window.innerHeight-$('.meeting').height())/2 && flag==false){
+                    y+=100*perent;
+                }else{
+                    y-=100*perent;
+                    flag=true;
+                }
+                $('.meeting').css({'left': left+'px','top': y+'px'});
+//                raf(animate);
+            }
+            var raf=window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame ||
+                    window.oRequestAnimationFrame || window.msRequestAnimationFrame || function(callback){
+                        window.setTimeout(callback,1000/60);
+                    };
             $(window).scroll(function(){
                 var scHeight=$(window).scrollTop();
                 var width=$(window).height();
@@ -43,7 +85,7 @@
 //                    $('.back').css('display','none');
                      $('.back').fadeOut(1500);
                 }
-            })
+            });
             $('.back').click(function(){
 //                var scHeight=$(window).scrollTop();
                 $('body,html').animate({scrollTop:0},300);
@@ -68,7 +110,7 @@
 //                $('.weather-box').fadeOut(1000);
 //                $('.show_weather').fadeIn(1000);
 //                $('.show_weather').animate({'left':'10px'},500);
-            })
+            });
         </script>
     </body>
 </html>

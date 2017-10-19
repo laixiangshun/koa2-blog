@@ -40,6 +40,7 @@ app.use(require('./routes/signin.js').routes());
 app.use(require('./routes/posts.js').routes());
 app.use(require('./routes/signout.js').routes());
 app.use(require('./routes/chat.js').routes());
+app.use(require('./routes/yanhua.js').routes());
 server.listen(config.port);//监听端口
 console.log('listening on port '+config.port);
 var users=[];
